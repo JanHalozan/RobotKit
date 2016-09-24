@@ -43,6 +43,7 @@ public final class EV3Robot: Robot {
 #else
 	public init() throws {
 		let manager = EAAccessoryManager.shared()
+		// TODO: ensure this is an EV3
 		let transport = ExternalAccessoryTransport(accessory: manager.connectedAccessories.first!, protocolString: "COM.LEGO.MINDSTORMS.EV3")
 		self.device = EV3Device(transport: transport)
 		RobotManager.shared.registerRobot(self)
