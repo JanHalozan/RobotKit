@@ -13,7 +13,7 @@ public enum EV3InputPort {
 }
 
 private extension EV3InputPort {
-	var internalRep: RobotFoundation.EV3InputPort {
+	var internalRep: EV3RawInputPort {
 		switch self {
 		case .one:
 			return .one
