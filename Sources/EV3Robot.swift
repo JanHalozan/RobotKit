@@ -8,12 +8,17 @@
 import Foundation
 import RobotFoundation
 
+#if os(iOS)
+import ExternalAccessory
+#endif
+
 public final class EV3Robot: Robot {
 	let device: EV3Device
 
 	// Used by EV3RobotDrawing
 	var deferredDrawingTransactions = 0
 
+#if os(OSX)
 	public init() throws {
 		let environment = ProcessInfo.processInfo.environment
 
@@ -35,6 +40,14 @@ public final class EV3Robot: Robot {
 
 		RobotManager.shared.registerRobot(self)
 	}
+#else
+	public init() throws {
+		let manager = EAAccessoryManager.shared()
+		let transport = ExternalAccessoryTransport(accessory: manager.connectedAccessories.first!, protocolString: "COM.LEGO.MINDSTORMS.EV3")
+		self.device = EV3Device(transport: transport)
+		RobotManager.shared.registerRobot(self)
+	}
+#endif
 
 	func prepareToExit() {
 		device.waitForCriticalOperations()
