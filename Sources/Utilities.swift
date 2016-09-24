@@ -57,13 +57,6 @@ extension EV3Robot {
 	}
 }
 
-extension NXTRobot {
-	/// Blocks the caller until all pending operations finish processing.
-	public func waitForPipeline() {
-		device.waitForOperations()
-	}
-}
-
 func verboseClamp(_ value: Int, _ label: String, _ minValue: Int, _ maxValue: Int) -> Int {
 	var trueValue = value
 
