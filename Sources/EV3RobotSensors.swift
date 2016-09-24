@@ -5,6 +5,7 @@
 //  Created by Matt on 6/25/16.
 //
 
+import Foundation
 import RobotFoundation
 
 /// Represents the EV3's four input ports.

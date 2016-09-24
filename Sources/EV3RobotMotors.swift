@@ -5,6 +5,7 @@
 //  Created by Matt on 2/13/16.
 //
 
+import Foundation
 import RobotFoundation
 
 public enum EV3MotorsError: Error {
